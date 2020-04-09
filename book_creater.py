@@ -7,10 +7,7 @@ class Book(object):
     def __init__(self, title, chapter_list):
         self.title = name
         self.chapters = chapter_list
-
-
-class Chapter(object):
-    def __init__(self, chapter_name, start_page, end_page):
-        self.name = chapter_name
-        self.start_page = start_page
-        self.end_page = end_page
+    def add_chapter():
+        chap_name = input("Enter chapter name: ")
+        start_page = (int)input("Enter start page for {}: ", chap_name)
+        end_page = (int)input("Enter ending page for {}: ", chap_name)
