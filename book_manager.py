@@ -4,10 +4,25 @@
 
 
 class Book(object):
-    def __init__(self, title, chapter_list):
-        self.title = name
-        self.chapters = chapter_list
+    def __init__(self):
+        _book_string = "{"
+        title = input("Book title:")
+        book_type = input("Type- [specialty, drink, food] :")
+        num_chapters = (int)input("number of chapters:")
+        length = input("Book length:")
+        description = input("Book description:")
+        tempvar = 0
+        _book_string = _book_string + "\"title\":\"{title}\"," +
+                "\"type\":\"{book_type}\","+
+                "\"length\":\"{length}\","+
+                "\"description\":\"{description}\","+
+                "\"chapters\":["
+
+
+        while var < num_chapters:
+            add_chapter()
     def add_chapter():
         chap_name = input("Enter chapter name: ")
         start_page = (int)input("Enter start page for {}: ", chap_name)
         end_page = (int)input("Enter ending page for {}: ", chap_name)
+        _book_string = _book_string + "{
