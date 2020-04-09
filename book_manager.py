@@ -27,4 +27,6 @@ class Book(object):
                 f"\"start_page\":\"{start_page}\","+
                 f"\"end_page\":\"{end_page}\""+
                 "}")
+            if y != num_chapters:
+                self._book_string += ","
         self._book_string += "]}"
