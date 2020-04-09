@@ -30,3 +30,4 @@ class Book(object):
             if y != num_chapters:
                 self._book_string += ","
         self._book_string += "]}"
+#def print_chapters(Book book)
