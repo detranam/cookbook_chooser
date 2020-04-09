@@ -6,28 +6,25 @@
 import json
 class Book(object):
     def __init__(self):
-        self._book_string = "{"
         title = input("Book title:")
         book_type = input("Type- [specialty, drink, food] :")
-        num_chapters = (int)(input("number of chapters:"))
         length = input("Book length:")
         description = input("Book description:")
-        tempvar = 0
-        _book_string = _book_string + (f"\"title\":\"{title}\"," +
-            f"\n\"type\":\"{book_type}\","+
-            f"\n\"length\":\"{length}\","+
-            f"\n\"description\":\"{description}\","+
+        self._book_string = ("{" + f"\"title\":\"{title}\"," +
+            f"\"type\":\"{book_type}\","+
+            f"\"length\":\"{length}\","+
+            f"\"description\":\"{description}\","+
             f"\"chapters\":[")
 
-    def add_chapter(num_chapters):
-        for x in range(num_chapters-1):
-            chap_name = input("Enter chapter name: ")
-            start_page = (int)(input("Enter start page for {}: ", chap_name))
-            end_page = (int)(input("Enter ending page for {}: ", chap_name))
-            _book_string = _book_string + ("{" +
-                f"\n\"title\":\"{chap_name}\","+
-                f"\n\"start_page\":\"{starting_page}\","+
-                f"\n\"end_page\":\"{end_page}\""+
+    def add_chapter(self, num_chapters):
+        for x in range(num_chapters):
+            y=x+1
+            chap_name = input(f"Enter chapter {y} name: ")
+            start_page = (int)(input("Enter start page: "))
+            end_page = (int)(input("Enter ending page : "))
+            self._book_string += ("{" +
+                f"\"title\":\"{y}: {chap_name}\","+
+                f"\"start_page\":\"{start_page}\","+
+                f"\"end_page\":\"{end_page}\""+
                 "}")
-        _book_string = _book_string + "]\n}"
-        return _book_string
+        self._book_string += "]}"
