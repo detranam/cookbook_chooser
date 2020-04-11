@@ -23,7 +23,8 @@ class Book(object):
             start_page = (int)(input("Enter start page: "))
             end_page = (int)(input("Enter ending page : "))
             self._book_string += ("{" +
-                f"\"title\":\"{y}: {chap_name}\","+
+                f"\"number\":\"{y}\","+
+                f"\"title\":\"{chap_name}\","+
                 f"\"start_page\":\"{start_page}\","+
                 f"\"end_page\":\"{end_page}\""+
                 "}")
@@ -31,3 +32,6 @@ class Book(object):
                 self._book_string += ","
         self._book_string += "]}"
 #def print_chapters(Book book)
+
+
+
