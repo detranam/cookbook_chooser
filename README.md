@@ -6,4 +6,4 @@
 [ ] Be able to randomly recieve a recipe from a single book
 [ ] Be able to randomly recieve a recipe from a single type (food, drink, etc)
 [ ] Be able to list all kinds of books (pretty printed)
-[ ] Be able to list all books (pretty printed)
+[x] Be able to list all books (pretty printed)

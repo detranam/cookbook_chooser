@@ -9,6 +9,7 @@ import json
 import argparse
 import book_manager
 import os
+import sys
 from tabulate import tabulate
 parser = argparse.ArgumentParser()
 parser.add_argument("-a", "--addbook", action="count", default=0,
@@ -18,6 +19,11 @@ parser.add_argument("-l", "--listbooks", action="count", default=0,
 parser.add_argument("-r", "--randomrecipe", action="count", default=0,
                     help="will pick a random page from a random book")
 args = parser.parse_args()
+
+if not len(sys.argv) > 1:
+    print("You must specify an argument!")
+    print("Try \'library.py --help\' for more information")
+    exit(1)
 
 
 def add_book():
@@ -31,9 +37,6 @@ def add_book():
         json.dump(tempdata, write_file)
 
 
-if not args:
-    exit(1)
-
 if args.addbook:
     # If our file already exists, append a new book to it
     if(os.path.exists('library.json')):
@@ -42,3 +45,19 @@ if args.addbook:
         with open("library.json", "w") as initial_write:
             initial_write.write("{\"library\": []}")
         add_book()
+
+if args.listbooks:
+    if(os.path.exists('library.json')):
+        with open("library.json", "r") as read_file:
+            booklist = json.load(read_file)
+            headers = ["Book Index", "Title"]
+            book_printer = []
+            x = 0
+            while x < len(booklist["library"]):
+                book_to_add = [x, booklist["library"][x]["title"]]
+                book_printer.append(book_to_add)
+                x += 1
+
+            print(tabulate(book_printer, headers, tablefmt="fancy_grid"))
+    else:
+        print("No library.json file exists")
