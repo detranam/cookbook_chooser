@@ -1,9 +1,11 @@
-# This file will deal with all the JSON parsing, both in and out, to allow for
-# book manipulation in this library.
-# This file should also be the main command line application, allowing for
-# pretty-printing of the entire library. This should also allow us to randomly
-# choose a page from ALL BOOKS, a subgenre of books.
+#!/usr/bin/env python
 
+"""Library for book management
+
+This file manages a .json library of books. This application in total is
+meant to allow a user to add multiple books (developed for cookbooks) so
+that the user can ask for a random recipe (given by page).
+"""
 
 import json
 import argparse
@@ -12,6 +14,13 @@ import os
 import sys
 import random
 from tabulate import tabulate
+
+__author__ = "detranam"
+__copyright__ = ""
+__version__ = "1.1.3"
+__maintainer__ = "detranam"
+__status__ = "Development"
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-a", "--addbook", action="count", default=0,
                     help="add a book to our library")
@@ -22,7 +31,7 @@ parser.add_argument("-r", "--randomrecipe", action="count", default=0,
 args = parser.parse_args()
 
 if not len(sys.argv) > 1:
-    print("\nERROR: NoArgumentPassed")
+    print("\nERROR: No Argument Passed")
     print("Try \'library.py --help\' for more information\n")
     exit(1)
 
@@ -31,6 +40,8 @@ def add_book():
     new_book = book_manager.Book()
     chapter_count = (int)(input("How many chapters? :"))
     new_book.add_chapter(chapter_count)
+    tempdata = ""
+    # load our library.json file,
     with open("library.json", "r") as read_file:
         tempdata = json.load(read_file)
     tempdata["library"].append(json.loads(new_book._book_string))
@@ -43,7 +54,7 @@ if args.addbook:
     if(os.path.exists('library.json')):
         add_book()
     else:
-        print("Autocreating library: Please add books")
+        print("Autocreating library")
         with open("library.json", "w") as initial_write:
             initial_write.write("{\"library\": []}")
         add_book()
@@ -83,10 +94,9 @@ if args.randomrecipe:
             page_selection = random.randint(start_page, end_page)
             # just do a format single string then print it
             recipe_string = (f"Make a recipe from \'{book_name}\'. It is" +
-                f" in chapter \'{chapter_name}\', on page {page_selection}")
+                f" in chapter \'{chapter_name}\', page {page_selection}")
             print(recipe_string)
     else:
         print("Autocreating library: Please add books")
         with open("library.json", "w") as initial_write:
             initial_write.write("{\"library\": []}")
-        add_book()

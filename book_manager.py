@@ -1,7 +1,16 @@
-# This file will have both books and chapters as objects.
-# Books will be collections of chapters. This file should also be able
-# to return a newly created book, and thus create books, to the main
-# library_controller to allow for this book to be written out to the json file.
+#
+"""Book object manager and book creator
+
+This file allows for the creation of books and chapters, objects 
+that are useful in the creation and modification of the library.json 
+file.
+"""
+
+__author__ = "detranam"
+__copyright__ = ""
+__version__ = "1.0.2"
+__maintainer__ = "detranam"
+__status__ = "Development"
 
 if __name__ == "__main__":
     exit(1)
@@ -13,6 +22,8 @@ class Book(object):
         book_type = input("Type- [specialty, drink, food] :")
         length = input("Book length:")
         description = input("Book description:")
+        # create a.json friendly book string to allow this Book
+        # to be added to the library.json file
         self._book_string = ("{" + f"\"title\":\"{title}\"," +
             f"\"type\":\"{book_type}\"," +
             f"\"length\":\"{length}\"," +
@@ -25,12 +36,17 @@ class Book(object):
             chap_name = input(f"Enter chapter {y} name: ")
             start_page = (int)(input("Enter start page: "))
             end_page = (int)(input("Enter ending page : "))
+            # create a .json friendly chapter string to add to
+            # our chapter list for a given book
             self._book_string += ("{" +
                 f"\"number\":\"{y}\"," +
                 f"\"title\":\"{chap_name}\"," +
                 f"\"start_page\":\"{start_page}\"," +
                 f"\"end_page\":\"{end_page}\"" +
                 "}")
+            # there must be a comma between every chapter until
+            # the final chapter, thus there must be an added
+            # comma for all but the last chapter
             if y != num_chapters:
                 self._book_string += ","
         self._book_string += "]}"
