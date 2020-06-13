@@ -22,13 +22,14 @@ class Book(object):
         book_type = input("Type- [specialty, drink, food] :")
         length = input("Book length:")
         description = input("Book description:")
-        
+
         # now we should make as unique an id as we can: take the first letter
         # of each word of the title and concatenate them into a 'unique id'
         split = title.split()
         id = ""
         for x in split:
             id += x[0]
+        id += (str)(len(title))
 
         # create a.json friendly book string to allow this Book
         # to be added to the library.json file
