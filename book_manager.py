@@ -17,11 +17,15 @@ if __name__ == "__main__":
 
 
 class Book(object):
-    def __init__(self):
-        title = input("Book title:")
-        book_type = input("Type- [specialty, drink, food] :")
-        length = input("Book length:")
-        description = input("Book description:")
+    def __init__(self, title = None, book_type = None, length = None, description = None):
+        if title is None:
+            title = input("Book title:")
+        if book_type is None:
+            book_type = input("Type- [specialty, drink, food] :")
+        if length is None:
+            length = input("Book length:")
+        if description is None:
+            description = input("Book description:")
 
         # now we should make as unique an id as we can: take the first letter
         # of each word of the title and concatenate them into a 'unique id'
@@ -33,7 +37,8 @@ class Book(object):
 
         # create a.json friendly book string to allow this Book
         # to be added to the library.json file
-        self._book_string = ("{" + f"\"title\":\"{title}\"," +
+        self._book_string = ("{" + 
+            f"\"title\":\"{title}\"," +
             f"\"type\":\"{book_type}\"," +
             f"\"length\":\"{length}\"," +
             f"\"description\":\"{description}\"," +
