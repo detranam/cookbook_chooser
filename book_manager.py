@@ -45,12 +45,17 @@ class Book(object):
             f"\"uniqueid\":\"{id}\"," +
             f"\"chapters\":[")
 
-    def add_chapter(self, num_chapters):
+    def add_chapter(self, num_chapters, chap_name = None, start_page = None, end_page = None):
         for x in range(num_chapters):
             y = x+1
-            chap_name = input(f"Enter chapter {y} name: ")
-            start_page = (int)(input("Enter start page: "))
-            end_page = (int)(input("Enter ending page : "))
+            
+            if chap_name is None:
+                chap_name = input(f"Enter chapter {y} name: ")
+            if start_page is None:
+                start_page = (int)(input("Enter start page: "))
+            if end_page is None:
+                end_page = (int)(input("Enter ending page : "))
+
             # create a .json friendly chapter string to add to
             # our chapter list for a given book
             self._book_string += ("{" +
