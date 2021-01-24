@@ -1,10 +1,10 @@
 #cookbook_chooser.py
 
 ##Goals
-[x] Be able to parse a json list of cookbooks
-[x] Be able to accept a new book and append it to the json library
-[x] Be able to randomly recieve a recipe from any book
-[x] Be able to list all books (pretty printed)
+- [x] Be able to parse a json list of cookbooks
+- [x] Be able to accept a new book and append it to the json library
+- [x] Be able to randomly recieve a recipe from any book
+- [x] Be able to list all books (pretty printed)
 
 ##Usage
 This personal project was created out of a desire for an easier way to 
